@@ -1,10 +1,10 @@
 # taro-vue-template
 
-这个模板可以帮助你快速使用 `Taro`, `Vue3`, `TypeScript` 和 `Vite` 进行小程序项目开发。
+这个模板可以帮助你快速使用 `Taro`, `Vue3`, `TypeScript` 和 `Webpack` 进行小程序项目开发。
 
 ## Framework packages
 
-Vite5 + Vue3 + Pinia + TypeScript + UnoCSS + NutUI + Taro
+Webpack5 + Vue3 + Pinia + TypeScript + UnoCSS + NutUI + Taro
 
 ## Package Manager
 pnpm
