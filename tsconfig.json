@@ -1,0 +1,35 @@
+{
+  // "extends": "@vue/tsconfig/tsconfig.json",
+  "compilerOptions": {
+    "target": "es2017", // esnext
+    "module": "commonjs", // esnext
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "noImplicitAny": true,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "strictNullChecks": true,
+    "outDir": "lib",
+    "baseUrl": ".",
+    "rootDir": ".",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@packages/*": ["./src/packages/*"]
+    }
+  },
+  "include": ["./src", "./types", "components.d.ts"],
+//  "exclude": ["node_modules"],
+  "compileOnSave": false
+}

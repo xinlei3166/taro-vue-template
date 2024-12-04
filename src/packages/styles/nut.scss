@@ -1,0 +1,39 @@
+.nut-form-custom {
+  --nut-cell-line-height: 56px;
+
+  .form-item-with-btn {
+    --nut-cell-line-height: 56px;
+  }
+
+  .input-text {
+    height: auto !important;
+  }
+
+  .nut-cell-group__wrap {
+    background: none !important;
+    box-shadow: none !important;
+    padding-right: 32px !important;
+    padding-left: 32px !important;
+  }
+
+  .nut-form-item {
+    border-radius: 16px !important;
+    &:not(:nth-last-of-type(1)) {
+      margin-bottom: 32px !important;
+    }
+  }
+
+  .nut-input {
+    border-bottom: none !important;
+    input {
+      color: initial !important;
+    }
+  }
+}
+
+.nut-form-btn-wrap {
+  margin: 64px 0 32px !important;
+  .nut-form-btn {
+    border-radius: 8px !important;
+  }
+}

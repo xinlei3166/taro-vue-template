@@ -1,0 +1,28 @@
+body, page {
+  background: $bg-color;
+}
+
+.bottom-btn-wrap {
+  margin-top: 16px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: env(safe-area-inset-bottom);
+}
+
+.card {
+  padding: 32px;
+  background: #fff;
+  border-radius: var(--van-radius-lg);
+}
+
+.components-card {
+  // height: calc(100vh - 92px - 48px - 100px)
+  min-height: 520px;
+  margin: 24px;
+  .title {
+    font-size: 32px;
+    color: $primary-color;
+    padding: 24px;
+  }
+}
