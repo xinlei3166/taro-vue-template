@@ -7,15 +7,17 @@ const config = {
   // 不需要登录的页面，白名单
   whiteList: [],
   // 需要登录的页面
-  authPages: ['/pages/my/index', '/pages/components/store/index'],
+  authPages: ['/pages/my/index', '/package1/pages/components/store/index'],
   // 登录页
-  loginPage: '/pages/login/index'
+  loginPage: '/package1/pages/login/index'
 }
 
 export function interceptRoute() {
-  // h5路由拦截，用于拦截用户地址栏输入地址Taro.
-  const locationUrl = window.location.href.split('/#')[1]
-  console.log('locationUrl', locationUrl)
+  // h5路由拦截，用于拦截用户地址栏输入地址
+  const h5LocationUrl = window.location.href.split('/#')[1]
+  const miniLocationUrl = window.location.pathname
+  const locationUrl = process.env.TARO_ENV === 'h5' ? h5LocationUrl : miniLocationUrl
+  console.log('locationUrl', process.env.TARO_ENV, locationUrl)
   // if (!config.whiteList.includes(locationUrl) && !getToken()) {
   if (config.authPages.includes(locationUrl) && !getToken()) {
     Taro.navigateTo({ url: config.loginPage })

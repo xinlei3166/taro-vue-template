@@ -6,7 +6,7 @@
       class="layout-navbar"
       :title="title"
       :left-arrow="leftArrow"
-      @click-left="onClickLeft"
+      @tap-left="onClickLeft"
     />
     <div class="layout-content">
       <keep-alive v-if="keepAlive">

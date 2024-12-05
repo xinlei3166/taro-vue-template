@@ -3,7 +3,7 @@ import type { Ref, ComputedRef } from 'vue'
 import { ref } from 'vue'
 import { usePagination } from './table'
 import { useExcel } from './excel'
-import type { ExcelColumn } from '@packages/utils'
+import type { ExcelColumn } from '@packages/utils/excel'
 
 interface DataOptions {
   params?: ComputedRef<Record<string, any>> | Record<string, any>

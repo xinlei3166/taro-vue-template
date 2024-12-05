@@ -8,14 +8,9 @@
   </view>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
 import A from './A.vue'
 import B from './B.vue'
-
-export default defineComponent({
-  components: { A, B }
-})
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

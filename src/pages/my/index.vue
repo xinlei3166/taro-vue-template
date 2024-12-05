@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view class="my-page">
     <view class="avatar-info">
       <view class="title-setting flex items-center justify-between">
         <text>我的</text>
@@ -17,12 +17,20 @@
       </view>
     </view>
     <nut-cell-group class="nav-menu">
-      <nut-cell icon="home" title="Router" @click="onClickMenu('/pages/components/router/index')">
+      <nut-cell
+        icon="home"
+        title="Router"
+        @click="onClickMenu('/package1/pages/components/router/index')"
+      >
         <template #icon>
           <IconFont name="home" class="mr-1" />
         </template>
       </nut-cell>
-      <nut-cell icon="edit" title="Store" @click="onClickMenu('/pages/components/store/index')">
+      <nut-cell
+        icon="edit"
+        title="Store"
+        @click="onClickMenu('/package1/pages/components/store/index')"
+      >
         <template #icon>
           <IconFont name="edit" class="mr-1" />
         </template>
@@ -30,18 +38,26 @@
       <nut-cell
         icon="star-n"
         title="Provide"
-        @click="onClickMenu('/pages/components/provide/index')"
+        @click="onClickMenu('/package1/pages/components/provide/index')"
       >
         <template #icon>
           <IconFont name="star-n" class="mr-1" />
         </template>
       </nut-cell>
-      <nut-cell icon="success" title="Bus" @click="onClickMenu('/pages/components/bus/index')">
+      <nut-cell
+        icon="success"
+        title="Bus"
+        @click="onClickMenu('/package1/pages/components/bus/index')"
+      >
         <template #icon>
           <IconFont name="success" class="mr-1" />
         </template>
       </nut-cell>
-      <nut-cell icon="date" title="Table" @click="onClickMenu('/pages/components/table/index')">
+      <nut-cell
+        icon="date"
+        title="Table"
+        @click="onClickMenu('/package1/pages/components/table/index')"
+      >
         <template #icon>
           <IconFont name="date" class="mr-1" />
         </template>
@@ -49,7 +65,7 @@
       <nut-cell
         icon="category"
         title="Sortable"
-        @click="onClickMenu('/pages/components/sortable/index')"
+        @click="onClickMenu('/package1/pages/components/sortable/index')"
       >
         <template #icon>
           <IconFont name="category" class="mr-1" />
@@ -101,47 +117,49 @@ const onLogout = async () => {
   const res = await logout()
   if (!res || res.code !== 0) return
   Taro.showToast({ title: '退出登录成功' })
-  Taro.navigateTo({ url: '/pages/login/index' })
+  Taro.navigateTo({ url: '/package1/pages/login/index' })
   removeToken()
   userStore.cleanup()
 }
 </script>
 
-<style lang="scss" scoped>
-.avatar-info {
-  padding: 0 32px;
-  height: 240px;
-  background: $primary-color;
-}
+<style lang="scss">
+.my-page {
+  .avatar-info {
+    padding: 0 32px;
+    height: 240px;
+    background: $primary-color;
+  }
 
-.avatar-info-image {
-  --nut-avatar-large-width: 100px;
-  --nut-avatar-large-height: 100px;
-}
+  .avatar-info-image {
+    --nut-avatar-large-width: 100px;
+    --nut-avatar-large-height: 100px;
+  }
 
-.title-setting {
-  height: 108px;
-  font-size: 32px;
-  color: #fff;
-}
-
-.username-phone {
-  margin-left: 24px;
-  .username {
-    font-weight: 500;
+  .title-setting {
+    height: 108px;
     font-size: 32px;
-    line-height: 44px;
     color: #fff;
   }
-  .phone {
-    margin-top: 2px;
-    font-size: 24px;
-    line-height: 36px;
-    color: #dcdee0;
-  }
-}
 
-.nav-menu {
-  margin: 24px !important;
+  .username-phone {
+    margin-left: 24px;
+    .username {
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 44px;
+      color: #fff;
+    }
+    .phone {
+      margin-top: 2px;
+      font-size: 24px;
+      line-height: 36px;
+      color: #dcdee0;
+    }
+  }
+
+  .nav-menu {
+    margin: 24px !important;
+  }
 }
 </style>

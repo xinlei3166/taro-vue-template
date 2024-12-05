@@ -28,9 +28,9 @@ const list = ref<Fruit[]>([
   { name: 'peach', id: '5' }
 ])
 
-useSortable(list, '.sortable-wrap')
+// useSortable(list, '.sortable-wrap')
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '@packages/styles/sortable.scss';
 </style>

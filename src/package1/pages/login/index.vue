@@ -1,5 +1,5 @@
 <template>
-  <view class="login">
+  <view class="login-page">
     <view class="login-title">登录账号</view>
     <nut-form ref="formRef" :model-value="form" class="login-form nut-form-custom">
       <nut-form-item
@@ -34,7 +34,7 @@
     <view class="tip-btn-wrap">
       <text>
         没有账号？
-        <text class="text-btn" @click="onRegister">去注册</text>
+        <text class="text-btn" @tap="onRegister">去注册</text>
       </text>
     </view>
   </view>
@@ -81,34 +81,34 @@ const onSubmit = async () => {
     const userStore = useUserStore()
     await userStore.setUserinfo()
     await userStore.setUserinfo()
-    Taro.showToast({ title: '登录成功' })
     Taro.switchTab({ url: '/pages/home/index' })
+    Taro.showToast({ title: '登录成功' })
   })
 }
 
 const onRegister = () => {
-  Taro.navigateTo({ url: '/pages/register/index' })
+  Taro.navigateTo({ url: '/package1/pages/register/index' })
 }
 </script>
 
-<style lang="scss" scoped>
-.login {
+<style lang="scss">
+.login-page {
   padding: 32px 0;
-}
 
-.login-title {
-  padding: 32px;
-  font-size: 40px;
-}
+  .login-title {
+    padding: 32px;
+    font-size: 40px;
+  }
 
-.login-form {
-  margin-top: 16px !important;
-}
+  .login-form {
+    margin-top: 16px !important;
+  }
 
-.tip-btn-wrap {
-  margin: 0 32px 0 32px;
-  padding-right: 20px;
-  text-align: right;
-  font-size: 28px;
+  .tip-btn-wrap {
+    margin: 0 32px 0 32px;
+    padding-right: 20px;
+    text-align: right;
+    font-size: 28px;
+  }
 }
 </style>

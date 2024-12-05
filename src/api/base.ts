@@ -10,7 +10,7 @@ const errorHandler = (msg: string) => {
   Taro.hideToast()
   Taro.showToast({ title: msg })
   setTimeout(() => {
-    Taro.navigateTo({ url: '/pages/login/index' })
+    Taro.navigateTo({ url: '/package1/pages/login/index' })
   }, 50)
 }
 

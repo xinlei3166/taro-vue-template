@@ -1,6 +1,6 @@
 import { ref } from 'vue'
-import type { ExcelColumn } from '@packages/utils'
-import { exportExcel as _exportExcel } from '@packages/utils'
+import type { ExcelColumn } from '@packages/utils/excel'
+import { exportExcel as _exportExcel } from '@packages/utils/excel'
 
 interface Options {
   excelFields: ExcelColumn[]

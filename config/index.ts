@@ -5,7 +5,7 @@ import prodConfig from './prod'
 import NutUIResolver from '@nutui/auto-import-resolver'
 import Components from 'unplugin-vue-components/webpack'
 import AutoImport from 'unplugin-auto-import/webpack'
-import UnoCSS from 'unocss/webpack'
+import UnoCSS from '@unocss/webpack'
 
 // import UnoCSS from 'unocss/vite'
 // import UnoCSSPostcss from '@unocss/postcss'
@@ -78,6 +78,15 @@ export default defineConfig<'webpack5'>(async (merge, { mode, command }) => {
       //   // })
       // ]
     },
+    jsMinimizer: 'terser',
+    terser: { enable: true },
+    cssMinimizer: 'csso',
+    csso: {
+      enable: true
+      // config: {
+      //   restructure: false
+      // }
+    },
     cache: {
       enable: false // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
     },
@@ -101,6 +110,12 @@ export default defineConfig<'webpack5'>(async (merge, { mode, command }) => {
         )
         chain.plugin('unocss').use(UnoCSS())
         chain.optimization.set('realContentHash', true)
+      },
+      optimizeMainPackage: {
+        enable: true
+      },
+      miniCssExtractPluginOption: {
+        ignoreOrder: true
       },
       postcss: {
         pxtransform: {

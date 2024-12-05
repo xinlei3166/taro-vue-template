@@ -6,7 +6,7 @@
         <nut-button size="small" shape="square" type="primary" @click="onSubmit">提交</nut-button>
       </template>
     </nut-input>
-    <view class="title">当前用户：{{ userinfo.userName }}</view>
+    <view class="title">当前用户：{{ userinfo?.userName }}</view>
   </view>
 </template>
 
@@ -17,8 +17,8 @@ import { useUserStore } from '@/store/user'
 export default defineComponent({
   setup() {
     const userStore = useUserStore()
-    const userinfo = computed(() => userStore.userinfo)
-    const name = ref(userinfo.value.userName)
+    const userinfo = computed(() => userStore.Userinfo)
+    const name = ref(userinfo.value?.userName)
 
     function onSubmit() {
       userStore.setUserName(name.value)
@@ -29,4 +29,4 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

@@ -63,7 +63,7 @@ function onPreview() {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .table-card {
   background: #fff;
   padding: 24px;

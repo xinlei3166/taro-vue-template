@@ -14,6 +14,6 @@ export const removeToken = () => {
 export const logoutCleanup = () => {
   const userStore = useUserStore()
   removeToken()
-  Taro.navigateTo({ url: '/pages/login/index' })
+  Taro.navigateTo({ url: '/package1/pages/login/index' })
   userStore.cleanup()
 }

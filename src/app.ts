@@ -6,7 +6,7 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 
 import { createPinia } from 'pinia'
-import piniaPersist from 'pinia-plugin-persist'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import plugins from '@packages/plugins'
 import '@packages/styles/index.scss'
 import '@packages/styles/reset.scss'
@@ -51,7 +51,7 @@ console.log('systemInfo', systemInfo)
 //   })
 // }
 const pinia = createPinia()
-pinia.use(piniaPersist)
+pinia.use(piniaPluginPersistedstate)
 App.use(pinia)
 App.use(plugins)
 App.mixin({

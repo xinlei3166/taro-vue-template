@@ -1,5 +1,5 @@
 <template>
-  <view class="register">
+  <view class="register-page">
     <view class="register-title">注册账号</view>
     <nut-form ref="formRef" :model-value="form" class="register-form nut-form-custom">
       <nut-form-item
@@ -81,7 +81,7 @@
     <view class="tip-btn-wrap">
       <text>
         已有账号？
-        <text class="text-btn" @click="onLogin">去登录</text>
+        <text class="text-btn" @tap="onLogin">去登录</text>
       </text>
     </view>
   </view>
@@ -155,38 +155,38 @@ const onSendCode = async () => {
 }
 
 const onLogin = () => {
-  Taro.navigateTo({ url: '/pages/login/index' })
+  Taro.navigateTo({ url: '/package1/pages/login/index' })
 }
 </script>
 
-<style lang="scss" scoped>
-.register {
+<style lang="scss">
+.register-page {
   padding: 32px 0;
-}
 
-.register-title {
-  padding: 32px;
-  font-size: 40px;
-}
-
-.register-form {
-  margin-top: 16px !important;
-}
-
-.register-field {
-  &:not(:nth-last-of-type(1)) {
-    margin-bottom: 32px !important;
+  .register-title {
+    padding: 32px;
+    font-size: 40px;
   }
-}
 
-.btn-wrap {
-  margin: 64px 32px 32px 32px;
-}
+  .register-form {
+    margin-top: 16px !important;
+  }
 
-.tip-btn-wrap {
-  margin: 0 32px 0 32px;
-  padding-right: 20px;
-  text-align: right;
-  font-size: 28px;
+  .register-field {
+    &:not(:nth-last-of-type(1)) {
+      margin-bottom: 32px !important;
+    }
+  }
+
+  .btn-wrap {
+    margin: 64px 32px 32px 32px;
+  }
+
+  .tip-btn-wrap {
+    margin: 0 32px 0 32px;
+    padding-right: 20px;
+    text-align: right;
+    font-size: 28px;
+  }
 }
 </style>

@@ -55,7 +55,7 @@ function onPreview() {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .btn {
   color: $primary-color;
   margin-right: 10px;

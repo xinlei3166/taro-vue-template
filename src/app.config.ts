@@ -3,15 +3,32 @@ export default {
     'pages/home/index',
     'pages/news/index',
     'pages/message/index',
-    'pages/my/index',
-    'pages/login/index',
-    'pages/register/index',
-    'pages/components/router/index',
-    'pages/components/store/index',
-    'pages/components/bus/index',
-    'pages/components/provide/index',
-    'pages/components/table/index',
-    'pages/components/sortable/index'
+    'pages/my/index'
+    // 'pages/login/index',
+    // 'pages/register/index',
+    // 'pages/components/router/index',
+    // 'pages/components/store/index',
+    // 'pages/components/bus/index',
+    // 'pages/components/provide/index',
+    // 'pages/components/table/index',
+    // 'pages/components/sortable/index'
+  ],
+  subPackages: [
+    {
+      name: 'p1',
+      root: 'package1',
+      pages: [
+        'pages/login/index',
+        'pages/register/index',
+        'pages/components/router/index',
+        'pages/components/store/index',
+        'pages/components/bus/index',
+        'pages/components/provide/index',
+        'pages/components/table/index',
+        'pages/components/sortable/index'
+      ],
+      independent: false
+    }
   ],
   tabBar: {
     color: '#7A7E83',

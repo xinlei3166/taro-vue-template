@@ -6,11 +6,12 @@
 
 <script lang="ts">
 import { defineComponent, ref, inject } from 'vue'
-import type { Emitter } from 'mitt'
+import { useBus } from '@packages/hooks/bus'
 
 export default defineComponent({
   setup() {
-    const bus = inject('bus') as Emitter<any>
+    const bus = useBus()
+    console.log('bus', bus)
     const number = ref(0)
 
     function onAdd() {
@@ -23,4 +24,4 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

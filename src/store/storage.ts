@@ -1,6 +1,7 @@
 import Taro from '@tarojs/taro'
 
 export const storage = {
-  getItem: Taro.getStorageSync,
-  setItem: Taro.setStorageSync
+  getItem: (key: string) => Taro.getStorageSync(key),
+  setItem: (key: string, value: any) => Taro.setStorageSync(key, value),
+  removeItem: (key: string) => Taro.removeStorageSync(key)
 }

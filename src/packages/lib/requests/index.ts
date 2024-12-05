@@ -69,7 +69,7 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
       const { [codeKey]: code, [messageKey]: msg } = response?.data || {}
       if (code && errorCodes.includes(code)) {
         // Taro.showToast({ title: msg })
-        // Taro.navigateTo({ url: '/pages/login/index' })
+        // Taro.navigateTo({ url: '/package1/pages/login/index' })
         errorHandler?.(msg)
         return response.data
       }

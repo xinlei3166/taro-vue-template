@@ -10,7 +10,7 @@ import { ref } from 'vue'
 const title = process.env.TARO_APP_TITLE
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .card {
   padding: 20px;
   background: #fff;
