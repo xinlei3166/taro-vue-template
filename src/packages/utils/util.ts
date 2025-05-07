@@ -221,3 +221,5 @@ export const convertStringToBoolean = (value: string) => {
 export const kebabCase = (str: string) => {
   return str.replace(/[A-Z]/g, match => `-${match.toLowerCase()}`)
 }
+
+export const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))

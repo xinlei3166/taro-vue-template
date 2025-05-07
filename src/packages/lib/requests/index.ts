@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import axios from 'axios-miniprogram'
+import axios from 'axios'
 import type { Config, InternalConfig, RequestsConfig, Method } from '@packages/types'
 import { httpMsg } from '@packages/types/enums'
 import { getToken, writeFile, writeBase64File } from '@packages/utils'

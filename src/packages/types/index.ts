@@ -1,5 +1,5 @@
 import type { Ref } from 'vue'
-import type { AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios-miniprogram'
+import type { AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios'
 
 export * from './requests'
 
@@ -59,7 +59,7 @@ export interface TabList {
   permission?: string
   name?: string // cn name
   tab?: string
-  slots?: Object
+  slots?: object
 }
 
 export type TabListRef = Ref<TabList[]>

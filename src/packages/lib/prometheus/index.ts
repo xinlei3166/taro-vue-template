@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro'
-import axios from 'axios-miniprogram'
-import type { AxiosRequestConfig } from 'axios-miniprogram'
+import axios from 'axios'
+import type { AxiosRequestConfig } from 'axios'
 import dayjs from 'dayjs'
 import { deepClone, getToken } from '@packages/utils'
 

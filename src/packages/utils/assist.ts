@@ -1,5 +1,4 @@
 import Taro from '@tarojs/taro'
-export const delay = (ms: any) => new Promise(resolve => setTimeout(resolve, ms))
 
 export function typeOf(obj: any) {
   const toString = Object.prototype.toString
