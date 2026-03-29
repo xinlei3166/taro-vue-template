@@ -174,11 +174,11 @@ export default defineConfig<'webpack5'>(async (merge, { mode, command }) => {
       }
       // devServer: {
       //   proxy: {
-      //     '/api': {
+      //     [process.env.TARO_APP_API_URL]: {
       //       target: 'http://192.168.2.87:8080', // 后端地址
       //       changeOrigin: true,
       //       pathRewrite: {
-      //         '^/api': ''
+      //         [`^${process.env.TARO_APP_API_URL}`]: ''
       //       }
       //     }
       //   }
