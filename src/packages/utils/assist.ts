@@ -21,7 +21,6 @@ export function typeOf(obj: any) {
 export function validateFields(form: Record<string, any>, messages: Record<string, any>) {
   for (const [k, v] of Object.entries(form)) {
     if (!v) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       messages[k] && Taro.showToast({ title: messages[k] })
       return
     }
