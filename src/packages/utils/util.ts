@@ -1,8 +1,8 @@
+import { customAlphabet } from 'nanoid/non-secure'
 import qs from 'qs'
 import { isObject, isArray } from './is'
-import sm3 from './sm3'
-import { customAlphabet } from 'nanoid/non-secure'
 import { foreignPhonePattern, phonePattern } from './patterns'
+import sm3 from './sm3'
 
 /**
  * 获取url 参数的方法
@@ -96,7 +96,7 @@ export function uniqueObjArr(
 }
 
 // 唯一Id
-export function uniqueId(size = 12) {
+export const uniqueId = (size = 12) => {
   const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
   const nanoid = customAlphabet(alphabet, size)
   return nanoid().toLowerCase()
@@ -206,7 +206,7 @@ export function isJSON(str: any) {
       } else {
         return false
       }
-    } catch (e) {
+    } catch (e: any) {
       return false
     }
   } else {

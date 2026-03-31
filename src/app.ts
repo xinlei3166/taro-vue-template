@@ -41,8 +41,8 @@ const App = createApp({
   // 入口组件不需要实现 render 方法，即使实现了也会被 taro 所覆盖
 })
 
-// const systemInfo = Taro.getSystemInfoSync && Taro.getSystemInfoSync()
-// console.log('systemInfo', systemInfo)
+const systemInfo = Taro.getSystemInfoSync && Taro.getSystemInfoSync()
+console.log('systemInfo', systemInfo)
 // if (process.env.TARO_APP_SHOW_VCONSOLE === 'true' && ['web'].includes(systemInfo?.platform)) {
 //   import('vconsole').then((module: any) => {
 //     new module.default()

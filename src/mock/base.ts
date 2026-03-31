@@ -1,5 +1,6 @@
 import Taro from '@tarojs/taro'
-import { uniqueId, delay } from '@packages/utils'
+import { customAlphabet } from 'nanoid/non-secure'
+import { delay } from '@packages/utils'
 
 const waitTime = 300
 export const response = async (data: any) => {
@@ -11,7 +12,7 @@ export const response = async (data: any) => {
   return data
 }
 
-export const genString = length => {
+export const genString = (length: any) => {
   let result = ''
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
   for (let i = 0; i < length; i++) {
@@ -21,7 +22,7 @@ export const genString = length => {
   return result
 }
 
-export const genNumber = (min, max) => {
+export const genNumber = (min: any, max: any) => {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
@@ -39,7 +40,7 @@ export const genEmail = () => {
   return prefix + '@' + domain
 }
 
-export const genChinese = length => {
+export const genChinese = (length: any) => {
   let result = ''
   for (let i = 0; i < length; i++) {
     const unicode = Math.round(Math.random() * (0x9fa5 - 0x4e00) + 0x4e00)
@@ -143,7 +144,7 @@ export const genName = () => {
   return randomSurname + randomName
 }
 
-export const genAge = (minAge, maxAge) => {
+export const genAge = (minAge: any, maxAge: any) => {
   const age = Math.floor(Math.random() * (maxAge - minAge + 1)) + minAge //生成minAge-maxAge之间的随机整数
   return age
 }
@@ -175,6 +176,12 @@ export const genImg = () => {
   return str
 }
 
+const genUniqueId = (size = 12) => {
+  const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+  const nanoid = customAlphabet(alphabet, size)
+  return nanoid().toLowerCase()
+}
+
 export default {
   response,
   genString,
@@ -187,5 +194,5 @@ export default {
   genAge,
   genTime,
   genImg,
-  genUniqueId: uniqueId
+  genUniqueId
 }
