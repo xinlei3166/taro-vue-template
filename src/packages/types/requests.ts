@@ -2,7 +2,7 @@ import type { AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios'
 
 export interface RequestsConfig {
   baseURL?: string
-  AuthorizationKey?: string
+  authorizationKey?: string
   errorCodes?: Array<string | number>
   codeKey?: string
   messageKey?: string

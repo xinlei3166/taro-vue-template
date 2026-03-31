@@ -15,4 +15,10 @@ const errorHandler = (msg: string) => {
 }
 
 const baseURL = process.env.TARO_APP_API_URL
-export const requests = useRequests({ baseURL, errorHandler })
+
+// 刷新令牌
+const pureRequests = useRequests({ baseURL, errorHandler, noRefreshToken: true })
+export const refreshTokenApi = (data?: Request) =>
+  pureRequests.post('/user/refresh_token', { refresh_token: data?.refreshToken })
+
+export const requests = useRequests({ baseURL, errorHandler, refreshTokenApi })

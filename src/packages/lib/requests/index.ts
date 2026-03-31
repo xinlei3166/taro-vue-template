@@ -1,8 +1,10 @@
 import Taro from '@tarojs/taro'
 import axios from 'axios'
 import type { Config, InternalConfig, RequestsConfig, Method } from '@packages/types'
+import { ContentTypeEnum } from '@packages/types/enums'
 import { httpMsg } from '@packages/types/enums'
 import { getToken, writeFile, writeBase64File } from '@packages/utils'
+// import { useTokenRefresh } from './useTokenRefresh'
 
 function startLoading(showLoading = false) {
   if (!showLoading) return
@@ -18,7 +20,7 @@ function endLoading(showLoading = false) {
 // const createRequests = (requestsConfig: RequestsConfig = {}) => {
 export const useRequests = (requestsConfig: RequestsConfig = {}) => {
   const baseURL = requestsConfig.baseURL || process.env.TARO_APP_API_URL
-  const AuthorizationKey = requestsConfig.AuthorizationKey || 'Access-Token'
+  const authorizationKey = requestsConfig.authorizationKey || 'Authorization'
   const errorCodes = requestsConfig.errorCodes || [500, 400]
   const codeKey = requestsConfig.codeKey || 'code'
   const messageKey = requestsConfig.messageKey || 'message'
@@ -31,7 +33,7 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
     withCredentials: true,
     headers: {
       // 'Content-Type': 'application/x-www-form-urlencoded',
-      // Authorization: 'token',
+      // authorization: 'token',
       'Content-Type': 'application/json'
     },
     requestOptions: {
@@ -49,7 +51,7 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
       config.headers = config.headers || {}
       const token = getToken()
       if (token) {
-        config.headers[AuthorizationKey] = token
+        config.headers[authorizationKey] = token
       }
       startLoading(config?.requestOptions?.showLoading)
       return config
