@@ -33,7 +33,7 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
     withCredentials: true,
     headers: {
       // 'Content-Type': 'application/x-www-form-urlencoded',
-      // authorization: 'token',
+      // Authorization: 'token',
       'Content-Type': 'application/json'
     },
     requestOptions: {
