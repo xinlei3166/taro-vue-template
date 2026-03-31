@@ -1,20 +1,18 @@
 import Taro from '@tarojs/taro'
-import { createApp } from 'vue'
-import { useUserStore } from '@/store/user'
-import { getToken, interceptRoute } from '@packages/utils'
 import dayjs from 'dayjs'
-import 'dayjs/locale/zh-cn'
-
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import { createApp } from 'vue'
+import 'dayjs/locale/zh-cn'
 import plugins from '@packages/plugins'
+import { getToken, interceptRoute } from '@packages/utils'
+import { useUserStore } from '@/store/user'
 import '@packages/styles/index.scss'
 import '@packages/styles/reset.scss'
 import '@/styles/index.scss'
 // import 'animate.css'
 // import 'virtual:uno.css'
 import 'uno.css'
-
 import './app.scss'
 
 dayjs.locale('zh-cn')
@@ -43,8 +41,8 @@ const App = createApp({
   // 入口组件不需要实现 render 方法，即使实现了也会被 taro 所覆盖
 })
 
-const systemInfo = Taro.getSystemInfoSync?.()
-console.log('systemInfo', systemInfo)
+// const systemInfo = Taro.getSystemInfoSync && Taro.getSystemInfoSync()
+// console.log('systemInfo', systemInfo)
 // if (process.env.TARO_APP_SHOW_VCONSOLE === 'true' && ['web'].includes(systemInfo?.platform)) {
 //   import('vconsole').then((module: any) => {
 //     new module.default()

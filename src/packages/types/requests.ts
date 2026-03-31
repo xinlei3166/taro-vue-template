@@ -8,6 +8,8 @@ export interface RequestsConfig {
   messageKey?: string
   successCode?: string | number
   errorHandler?: Function
+  noRefreshToken?: boolean
+  refreshTokenApi?: (...args: any[]) => Promise<any>
 }
 
 export type Method = 'get' | 'post' | 'put' | 'patch' | 'delete'

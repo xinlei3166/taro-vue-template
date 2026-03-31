@@ -26,6 +26,8 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
   const messageKey = requestsConfig.messageKey || 'message'
   const successCode = requestsConfig.successCode || 0
   const errorHandler = requestsConfig.errorHandler
+  // const noRefreshToken = requestsConfig.noRefreshToken
+  // const refreshTokenApi = requestsConfig.refreshTokenApi
 
   const service = axios.create({
     baseURL,
@@ -34,7 +36,7 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
     headers: {
       // 'Content-Type': 'application/x-www-form-urlencoded',
       // Authorization: 'token',
-      'Content-Type': 'application/json'
+      'Content-Type': ContentTypeEnum.Json
     },
     requestOptions: {
       showLoading: false,
@@ -43,6 +45,13 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
       fileName: undefined
     }
   } as Config)
+
+  // const { handleRefreshed } = useTokenRefresh({
+  //   authorizationKey,
+  //   successCode,
+  //   errorHandler,
+  //   refreshTokenApi
+  // })
 
   // request 拦截器
   service.interceptors.request.use(
@@ -75,6 +84,10 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
         errorHandler?.(msg)
         return response.data
       }
+      // token过期，需要续期
+      // if (code && code === 20011 && !noRefreshToken) {
+      //   return handleRefreshed(service, response.config)
+      // }
       if (code && code !== successCode) {
         Taro.hideToast()
         Taro.showToast({ title: msg })
@@ -145,7 +158,7 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
         if (responseType === 'blob') {
           data = res
         } else {
-          const { code, data: _data, message: msg } = res
+          const { code, data: _data } = res
           if (code && code !== successCode) {
             return
           }

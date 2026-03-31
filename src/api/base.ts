@@ -1,5 +1,6 @@
 import Taro from '@tarojs/taro'
 import { useRequests } from '@packages/lib'
+import type { Request } from '@packages/types'
 import { removeToken } from '@packages/utils'
 import { useUserStore } from '@/store/user'
 

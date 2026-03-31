@@ -1,19 +1,17 @@
-import { defineConfig, type UserConfigExport } from '@tarojs/cli'
-import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
-import devConfig from './dev'
-import prodConfig from './prod'
 import NutUIResolver from '@nutui/auto-import-resolver'
-import Components from 'unplugin-vue-components/webpack'
-import AutoImport from 'unplugin-auto-import/webpack'
+import { defineConfig, type UserConfigExport } from '@tarojs/cli'
 import UnoCSS from '@unocss/webpack'
-
+import path from 'path'
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
+import AutoImport from 'unplugin-auto-import/webpack'
+import Components from 'unplugin-vue-components/webpack'
+import devConfig from './dev'
 // import UnoCSS from 'unocss/vite'
 // import UnoCSSPostcss from '@unocss/postcss'
 // import { createHtmlPlugin } from 'vite-plugin-html'
 // import AutoImport from 'unplugin-auto-import/vite'
 // import Components from 'unplugin-vue-components/vite'
-
-import path from 'path'
+import prodConfig from './prod'
 
 // https://taro-docs.jd.com/docs/next/config#defineconfig-辅助函数
 // export default defineConfig<'vite'>(async (merge, { mode, command }) => {
