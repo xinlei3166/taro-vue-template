@@ -22,7 +22,8 @@ function endLoading(showLoading = false) {
 export const useRequests = (requestsConfig: RequestsConfig = {}) => {
   const baseURL = requestsConfig.baseURL || process.env.TARO_APP_API_URL
   const authorizationKey = requestsConfig.authorizationKey || 'Authorization'
-  const errorCodes = requestsConfig.errorCodes || [500, 400]
+  // 20004: 登录超时, 20010: token错误, 20012: token版本错误, 20102: 用户已禁用
+  const errorCodes = requestsConfig.errorCodes || [20004, 20010, 20012, 20102]
   const codeKey = requestsConfig.codeKey || 'code'
   const messageKey = requestsConfig.messageKey || 'message'
   const successCode = requestsConfig.successCode || 0
