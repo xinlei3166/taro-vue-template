@@ -5,6 +5,7 @@ import { ContentTypeEnum } from '@packages/types/enums'
 import { httpMsg } from '@packages/types/enums'
 import { getToken, writeFile, writeBase64File } from '@packages/utils'
 // import { useTokenRefresh } from './useTokenRefresh'
+// import { parseBlobError } from './utils'
 
 function startLoading(showLoading = false) {
   if (!showLoading) return
@@ -76,7 +77,24 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
       endLoading(response?.config?.requestOptions?.showLoading)
       const { responseType } = response?.config?.requestOptions || {}
       if (responseType === 'raw') return response
-      if (responseType === 'blob') return response.data
+      if (responseType === 'blob') {
+        const contentType = response.headers?.['content-type']
+        if (contentType.includes('application/json')) {
+          const blobError = await parseBlobError(response.data, codeKey, messageKey)
+
+          // token 过期，需要续期
+          // if (blobError.code === 20011 && !noRefreshToken) {
+          //   return handleRefreshed(service, response.config)
+          // }
+
+          Taro.showToast({ title: blobError.message || '下载失败'})
+          return
+        }
+        if (useHeaderFileName) {
+          return response
+        }
+        return response.data
+      }
       const { [codeKey]: code, [messageKey]: msg } = response?.data || {}
       if (code && errorCodes.includes(code)) {
         // Taro.showToast({ title: msg })
