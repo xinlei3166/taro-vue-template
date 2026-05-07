@@ -194,7 +194,7 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
           data = stringify ? JSON.stringify(_data) : _data
         }
         const write = responseType === 'base64' ? writeBase64File : writeFile
-        await write(fileName as string, data, blobOptions)
+        await write(headerFileName || fileName as string, data, blobOptions)
         return true
       })
       .catch(e => console.log(e))
