@@ -3,7 +3,7 @@ import axios from 'axios'
 import type { Config, InternalConfig, RequestsConfig, Method } from '@packages/types'
 import { ContentTypeEnum } from '@packages/types/enums'
 import { httpMsg } from '@packages/types/enums'
-import { getToken, writeFile, writeBase64File } from '@packages/utils'
+import { getToken, writeFile, writeBase64File, getFileNameFromContentDisposition } from '@packages/utils'
 // import { useTokenRefresh } from './useTokenRefresh'
 // import { parseBlobError } from './utils'
 
@@ -169,13 +169,23 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
     } else {
       api = service[method](url, data, config)
     }
-    const { fileName, responseType, stringify, cb, blobOptions } = config.requestOptions || {}
+    const { fileName, responseType, stringify, cb, blobOptions, useHeaderFileName } = config.requestOptions || {}
     return api
       .then(async (res: any) => {
         cb?.(res)
         let data
         if (responseType === 'blob') {
-          data = res
+          if (!res) return false
+          if (useHeaderFileName) {
+            data = res.data
+            // 从response的headers中获取filename, "Content-disposition", "attachment; filename=xxxx.docx"
+            const contentDisposition =
+              res.headers['content-disposition'] || res.headers['Content-Disposition']
+            headerFileName = getFileNameFromContentDisposition(contentDisposition)
+            console.log('headerFileName:', headerFileName)
+          } else {
+            data = res
+          }
         } else {
           const { code, data: _data } = res
           if (code && code !== successCode) {
