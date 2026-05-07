@@ -223,3 +223,22 @@ export const kebabCase = (str: string) => {
 }
 
 export const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+
+// 从 Content-Disposition 中获取文件名
+export function getFileNameFromContentDisposition(contentDisposition?: string): string {
+  if (!contentDisposition) return ''
+
+  // 1. 优先 filename*=UTF-8''xxx
+  const filenameStarMatch = contentDisposition.match(/filename\*=UTF-8''([^;]+)/i)
+  if (filenameStarMatch?.[1]) {
+    return decodeURIComponent(filenameStarMatch[1].trim())
+  }
+
+  // 2. fallback: filename="xxx"
+  const filenameMatch = contentDisposition.match(/filename="?([^";]+)"?/i)
+  if (filenameMatch?.[1]) {
+    return decodeURIComponent(filenameMatch[1].trim())
+  }
+
+  return ''
+}
